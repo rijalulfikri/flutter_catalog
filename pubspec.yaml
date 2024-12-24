@@ -112,6 +112,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.9
+  flutter_flavorizr: 2.2.3
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.0
   freezed: ^2.5.2
@@ -163,3 +164,25 @@ flutter:
     - screenshots/Screenshot_1541613187.png
     - screenshots/Screenshot_1541613193.png
     - screenshots/Screenshot_1541613197.png
+flavorizr:
+  ide: 'vscode'
+  app:
+    android:
+      flavorDimensions: 'flavor-type'
+
+  flavors:
+    learn:
+      app:
+        name: 'Flutter Ship Learn'
+      android:
+        applicationId: 'com.example.flutter_catalog.learn'
+      ios:
+        bundleId: 'com.example.flutter_catalog.learn'
+
+    prod:
+      app:
+        name: 'Flutter Ship'
+      android:
+        applicationId: 'com.example.flutter_catalog'
+      ios:
+        bundleId: 'com.example.flutter_catalog'

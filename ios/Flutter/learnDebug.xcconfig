@@ -1,0 +1,7 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_learn.dart
+ASSET_PREFIX=learn
+BUNDLE_NAME=Flutter Ship Learn
+BUNDLE_DISPLAY_NAME=Flutter Ship Learn
