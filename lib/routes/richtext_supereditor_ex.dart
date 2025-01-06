@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:follow_the_leader/follow_the_leader.dart';
 import 'package:super_editor/super_editor.dart';
 
 class SuperEditorExample extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SuperEditorExampleState extends State<SuperEditorExample> {
   final _editorFocusNode = FocusNode();
 
   late Document _doc;
-  late DocumentEditor _editor;
+  late Editor _editor;
   late DocumentComposer _composer;
   late CommonEditorOperations _ops;
   void _cut() => _ops.cut();
@@ -30,19 +31,22 @@ class _SuperEditorExampleState extends State<SuperEditorExample> {
     _doc = MutableDocument(
       nodes: [
         ImageNode(
-            id: DocumentEditor.createNodeId(),
+            id: Editor.createNodeId(),
             imageUrl:
                 'https://user-images.githubusercontent.com/7259036/170845431-e83699df-5c6c-4e9c-90fc-c12277cc2f48.png'),
         ParagraphNode(
-          id: DocumentEditor.createNodeId(),
-          text: AttributedText(text: 'SuperEditor'),
+          id: Editor.createNodeId(),
+          text: AttributedText('SuperEditor'),
           metadata: {'blockType': header1Attribution},
         ),
       ],
     );
-    _editor = DocumentEditor(document: _doc as MutableDocument);
-    _composer = DocumentComposer();
+    _editor = Editor(editables: {
+      'document': _doc as MutableDocument,
+    });
+    _composer = MutableDocumentComposer();
     _ops = CommonEditorOperations(
+      document: _doc,
       editor: _editor,
       composer: _composer,
       documentLayoutResolver: () =>
@@ -83,7 +87,7 @@ class _SuperEditorExampleState extends State<SuperEditorExample> {
                 onCutPressed: _cut,
                 onCopyPressed: _copy,
                 onPastePressed: _paste,
-                focalPoint: Offset.zero,
+                focalPoint: LeaderLink(),
               ),
             ),
           ),
@@ -97,11 +101,14 @@ class _SuperEditorExampleState extends State<SuperEditorExample> {
     return SizedBox(
       height: 32,
       child: MultiListenableBuilder(
-        listenables: <Listenable>{_doc, _composer.selectionNotifier},
+        listenables: <Listenable>{_composer.selectionNotifier},
         builder: (_) => _composer.selection == null
             ? const SizedBox()
             : KeyboardEditingToolbar(
-                document: _doc, composer: _composer, commonOps: _ops),
+                document: _doc,
+                composer: _composer,
+                commonOps: _ops,
+                editor: _editor),
       ),
     );
   }

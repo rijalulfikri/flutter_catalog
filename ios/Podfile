@@ -6,9 +6,12 @@ $iOSVersion = '14.0'
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 project 'Runner', {
-  'Debug' => :debug,
-  'Profile' => :release,
-  'Release' => :release,
+  'Debug-learn' => :debug,
+  'Profile-learn' => :release,
+  'Release-learn' => :release,
+  'Debug-prod' => :debug,
+  'Profile-prod' => :release,
+  'Release-prod' => :release,
 }
 
 def flutter_root
@@ -29,6 +32,7 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 flutter_ios_podfile_setup
 
 target 'Runner' do
+   pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.25.0'
   use_frameworks!
   use_modular_headers!
   # https://pub.dev/packages/edge_detection

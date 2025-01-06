@@ -16,7 +16,7 @@ import './firebase_options.dart';
 import './my_app_settings.dart';
 import './my_main_app.dart';
 
-Future<void> main() async {
+Future<void> runMainApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsMobileOrWeb) {
     await Firebase.initializeApp(
