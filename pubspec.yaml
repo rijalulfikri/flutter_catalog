@@ -4,7 +4,7 @@ description: An app showcasing Flutter components, with side-by-side source code
 version: 3.8.2+106
 
 environment:
-  sdk: ">=3.3.3 <4.0.0"
+  sdk: '>=3.3.3 <4.0.0'
 
 publish_to: none
 
@@ -106,8 +106,9 @@ dependencies:
   webview_flutter: ^4.7.0
   widget_with_codeview:
     path: packages/widget_with_codeview
-
   youtube_player_iframe: ^5.1.2
+  super_editor: ^0.3.0-dev.11
+  follow_the_leader: ^0.0.4+8
 
 dev_dependencies:
   build_runner: ^2.4.9
@@ -127,7 +128,7 @@ dependency_overrides:
 # $ dart run flutter_launcher_icons
 # Cf. https://pub.dev/packages/flutter_launcher_icons
 flutter_launcher_icons:
-  android: "launcher_icon"
+  android: 'launcher_icon'
   ios: true
   remove_alpha_ios: true
   image_path: res/images/app_icon.png
@@ -141,7 +142,7 @@ flutter_launcher_icons:
 # $ dart run flutter_native_splash:create
 # Cf. https://pub.dev/packages/flutter_native_splash
 flutter_native_splash:
-  color: "#f6f6f6"
+  color: '#f6f6f6'
   image: res/images/app_icon.png
 
 # The following section is specific to Flutter.
