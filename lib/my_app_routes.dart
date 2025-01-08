@@ -2,12 +2,13 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'constants.dart';
 import 'home_page.dart';
 import 'my_route.dart';
 import 'routes/about.dart';
+import 'routes/aiml_chatgpt_ex.dart';
 import 'routes/aiml_groq_ex.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
@@ -41,13 +42,13 @@ import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/charts_timelines_ex.dart';
 import 'routes/feature_device_preview.dart';
+import 'routes/feature_grey_app.dart';
 import 'routes/feature_store_secrets.dart';
 import 'routes/firebase_chatroom_ex.dart';
 import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
 import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
-import 'routes/feature_grey_app.dart';
 import 'routes/growth_inapp_review_ex.dart';
 import 'routes/growth_my_other_apps.dart';
 import 'routes/layouts_container_padding_center_ex.dart';
@@ -87,12 +88,12 @@ import 'routes/nav_nav_drawer_header_ex.dart';
 import 'routes/nav_pageselector_ex.dart';
 import 'routes/nav_routes_ex.dart';
 import 'routes/nav_tabs_ex.dart';
-import 'routes/aiml_chatgpt_ex.dart';
 import 'routes/networking_dio_download_ex.dart';
 import 'routes/networking_googlebooks_ex.dart';
 import 'routes/networking_hacker_news_ex.dart';
 import 'routes/networking_rest_api_fetch_ex.dart';
 import 'routes/networking_rest_api_send_ex.dart';
+import 'routes/onboarding_feature_discovery_ex.dart';
 import 'routes/onboarding_intro_screen_ex.dart';
 import 'routes/onboarding_whats_new_ex.dart';
 import 'routes/persistence_file_rw_ex.dart';
@@ -100,7 +101,6 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
-import 'routes/onboarding_feature_discovery_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_share_plus_ex.dart';
 import 'routes/plugins_shimmer_ex.dart';
@@ -167,6 +167,20 @@ class MyRouteGroup {
   final Widget icon;
   final List<MyRoute> routes;
 }
+
+//Daftar route untuk widget guide
+const kMyAppRoutesWidgetGuide = <MyRoute>[
+  MyRoute(
+    child: IconExample(),
+    sourceFilePath: 'lib/routes/widgets_icon_ex.dart',
+    title: 'Icon',
+  ),
+  MyRoute(
+    child: TextExample(),
+    sourceFilePath: 'lib/routes/widgets_text_ex.dart',
+    title: 'Text',
+  ),
+];
 
 const kMyAppRoutesBasic = <MyRouteGroup>[
   MyRouteGroup(

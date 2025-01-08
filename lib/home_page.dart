@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'constants.dart';
-import 'my_app_routes.dart';
 
 import './my_app_settings.dart';
 import './my_route.dart';
+import 'constants.dart';
+import 'my_app_routes.dart';
 import 'routes/monetization_inline_banner_ad_ex.dart';
 import 'routes/onboarding_intro_screen_ex.dart';
 
@@ -45,6 +45,12 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             child: Icon(Icons.rocket)),
         label: 'In Action',
       ),
+      //TODO tambahkan BottomNavigationBarItem untuk 'FlutterWidgetGuide'
+      BottomNavigationBarItem(
+        backgroundColor: Colors.indigo,
+        icon: Icon(Icons.book),
+        label: 'Guide',
+      ),
       BottomNavigationBarItem(
         backgroundColor: Colors.indigo,
         icon: Icon(Icons.star),
@@ -59,6 +65,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   final ScrollController _scrollController2 = ScrollController();
   final ScrollController _scrollController3 = ScrollController();
   final ScrollController _scrollController4 = ScrollController();
+  final ScrollController _scrollController5 = ScrollController();
 
   @override
   void initState() {
@@ -82,6 +89,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     _scrollController2.dispose();
     _scrollController3.dispose();
     _scrollController4.dispose();
+    _scrollController5.dispose();
     super.dispose();
   }
 
@@ -102,6 +110,12 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         _myRouteGroupToExpansionTile(group),
       const MyBannerAd(),
     ];
+    //TODO tambahkan 'flutter_widget_guide'
+    final widgetGuide = <Widget>[
+      for (final MyRoute group in kMyAppRoutesWidgetGuide)
+        _myRouteToListTile(group),
+      const MyBannerAd(),
+    ];
     final bookmarkAndAboutDemos = <Widget>[
       for (final MyRoute route in ref.watch(mySettingsProvider).starredRoutes)
         _myRouteToListTile(route, leading: const Icon(Icons.bookmark)),
@@ -115,8 +129,11 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ListView(controller: _scrollController1, children: basicDemos),
           ListView(controller: _scrollController2, children: advancedDemos),
           ListView(controller: _scrollController3, children: inactionDemos),
+          //TODO tambahkan 'flutter_widget_guide'
+          ListView(controller: _scrollController4, children: widgetGuide),
+          Text("Flutter Widget Guide"),
           ListView(
-              controller: _scrollController4, children: bookmarkAndAboutDemos),
+              controller: _scrollController5, children: bookmarkAndAboutDemos),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
