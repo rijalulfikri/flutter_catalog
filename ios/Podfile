@@ -32,7 +32,8 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 flutter_ios_podfile_setup
 
 target 'Runner' do
-   pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.25.0'
+  # Jika baris ini tidak ada, muncul pesan: Error (Xcode): unsupported option '-G' for target 'x86_64-apple-ios14.0-simulator'
+  pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.25.0'
   use_frameworks!
   use_modular_headers!
   # https://pub.dev/packages/edge_detection
@@ -40,10 +41,11 @@ target 'Runner' do
 
   # Copied from https://github.com/flutter-ml/google_ml_kit_flutter/blob/develop/packages/example/ios/Podfile
   # Add language package you need to use
-  pod 'GoogleMLKit/TextRecognitionChinese', '~> 5.0.0'
-  pod 'GoogleMLKit/TextRecognitionDevanagari', '~> 5.0.0'
-  pod 'GoogleMLKit/TextRecognitionJapanese', '~> 5.0.0'
-  pod 'GoogleMLKit/TextRecognitionKorean', '~> 5.0.0'
+  # Baris-baris berikut ini boleh dihapus/dicomment, asalkan Podfile.lock juga dihapus
+  # pod 'GoogleMLKit/TextRecognitionChinese', '~> 5.0.0'
+  # pod 'GoogleMLKit/TextRecognitionDevanagari', '~> 5.0.0'
+  # pod 'GoogleMLKit/TextRecognitionJapanese', '~> 5.0.0'
+  # pod 'GoogleMLKit/TextRecognitionKorean', '~> 5.0.0'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
