@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/guide/viewmodel/list_viewmodel.dart';
+import 'package:flutter_catalog/guide/widgets/home_list_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import './my_app_settings.dart';
@@ -110,10 +112,12 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         _myRouteGroupToExpansionTile(group),
       const MyBannerAd(),
     ];
-    //TODO tambahkan 'flutter_widget_guide'
+    //Menambahkan 'flutter_widget_guide'
+    final listViewModel = ListViewModel();
+    final listItems = listViewModel.getListItems();
     final widgetGuide = <Widget>[
-      for (final MyRoute group in kMyAppRoutesWidgetGuide)
-        _myRouteToListTile(group),
+      for (final entry in listItems.asMap().entries)
+        listItemDesign(context, entry.value, entry.key),
       const MyBannerAd(),
     ];
     final bookmarkAndAboutDemos = <Widget>[
@@ -129,7 +133,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ListView(controller: _scrollController1, children: basicDemos),
           ListView(controller: _scrollController2, children: advancedDemos),
           ListView(controller: _scrollController3, children: inactionDemos),
-          //TODO tambahkan 'flutter_widget_guide'
+          //Menambahkan 'flutter_widget_guide'
           ListView(controller: _scrollController4, children: widgetGuide),
           Text("Flutter Widget Guide"),
           ListView(
